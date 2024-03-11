@@ -1,11 +1,15 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import { db } from '../lib/firebase';
 import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
 
-const Layout = ({ children }: { children: JSX.Element }) => {
+type Props = {
+    children: ReactNode;
+}
+
+export const Layout: React.FC<Props> = ({ children }) => {
     const router = useRouter();
     const { pathname } = router;
     const pahts = ["/home", "/friend", "/profile"];
@@ -23,12 +27,7 @@ const Layout = ({ children }: { children: JSX.Element }) => {
     useEffect(() => {
         testFireBase();
     })
-
     return (
-        <div>
-            hi2
-        </div>
-    );
-};
-
-export default Layout;
+        <div>안뇽</div>
+    )
+}

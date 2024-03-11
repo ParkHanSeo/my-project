@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import { SessionProvider } from "next-auth/react";
-import Layout from "@/layouts/Layout";
+import { Layout } from "@/layouts/Layout";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useState } from "react";
 
