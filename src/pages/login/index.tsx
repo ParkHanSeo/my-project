@@ -1,11 +1,7 @@
-import React from "react";
-import Link from "next/link";
+import { NextPage } from 'next';
+import { LoginInput } from "@/components/LoginInput";
 
-export const index: React.FC = () => {
-
-    return (
-        <div>
-            
-        </div>
-    )
+const Login: NextPage = () => {
+    return <LoginInput title="로그인" />;
 }
+export default Login;

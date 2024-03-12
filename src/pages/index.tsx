@@ -8,7 +8,7 @@ export default function index() {
     const handleOAuthLogin = async (type: string) => {
         const result = await signIn(type, { callbackUrl: "/home" });
     };
-
+    
     return (
             <div className="main">
                 <div className="main_wrap">

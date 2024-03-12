@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { PageRouter } from "@/components/router/PageRouter";
-import { db } from '../lib/firebase';
+import { PageRouter } from "@/components/PageRouter/PageRouter";
+import { db } from '../../public/firebase';
 import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
+import styles from './Layout.module.scss';
 
 type Props = {
     children: ReactNode;
@@ -21,13 +22,11 @@ export const Layout: React.FC<Props> = ({ children }) => {
     const { pathname } = router;
     const { data: session, status } = useSession();
 
-    console.log("데이터 체크");
-    console.log(router);
-    console.log(session);
-
     return (
-            <PageRouter>
-                {children}
-            </PageRouter>
+            <div className={styles.layout}>
+                <PageRouter>
+                    {children}
+                </PageRouter>
+            </div>
     )
 }

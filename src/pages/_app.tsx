@@ -7,16 +7,13 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { useState } from "react";
 import type { AppPropsWithLayout } from '@/pages/types';
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) {
     const [queryClient] = useState(() => new QueryClient());
     const getLayout = Component.getLayout || "/";
 
-    console.log("Component 체크");
-    console.log(pageProps);
-
     return (
         <RecoilRoot>
-            <SessionProvider>
+            <SessionProvider session={session}>
                 <QueryClientProvider client={queryClient}>
                     <Layout>
                         <Component {...pageProps} />
