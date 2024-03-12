@@ -1,0 +1,10 @@
+{
+    "manifest_version": 2,
+    "name": "PROJECT",
+    "short_name": "PROJECT",
+    "display": "standalone",
+    "orientation": "landscape",
+    "background_color": "#1689D8",
+    "theme_color": "#1689D8",
+    "start_url": "/"
+}
