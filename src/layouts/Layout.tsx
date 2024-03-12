@@ -1,7 +1,10 @@
 import React, { ReactNode } from "react";
+import { signIn } from "next-auth/react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { PageRouter } from "@/components/router/PageRouter";
 import { db } from '../lib/firebase';
 import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
 
@@ -10,24 +13,21 @@ type Props = {
 }
 
 export const Layout: React.FC<Props> = ({ children }) => {
+    const handleOAuthLogin = async (type: string) => {
+        const result = await signIn(type, { callbackUrl: "/home" });
+    };    
+
     const router = useRouter();
     const { pathname } = router;
-    const pahts = ["/home", "/friend", "/profile"];
+    const { data: session, status } = useSession();
 
-    const testFireBase = async () => {
-        console.log(db);
-        const testRef = await addDoc(collection(db, 'myProject'), {
-            completed: true,
-            test: "하이하이"
-        });        
-        const query = await getDocs(collection(db, 'myProject'));
-        console.log(testRef.id);
-    }
+    console.log("데이터 체크");
+    console.log(router);
+    console.log(session);
 
-    useEffect(() => {
-        testFireBase();
-    })
     return (
-        <div>안뇽</div>
+            <PageRouter>
+                {children}
+            </PageRouter>
     )
 }
