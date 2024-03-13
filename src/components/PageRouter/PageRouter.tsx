@@ -14,9 +14,6 @@ export const PageRouter: React.FC<Props> = ({
     const { pathname } = router;
     const { data: session, status } = useSession();
 
-    // console.log("데이터 체크");
-    // console.log(pathname);
-
     const pageRouter = () => {
 
     }

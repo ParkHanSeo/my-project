@@ -3,8 +3,7 @@ import React from "react";
 export const Home: React.FC<{}> = ({
     
 }) => {
-    console.log("체크");
     return (
-        <></>
+        <div>여기는 홈입니다</div>
     )
 }
