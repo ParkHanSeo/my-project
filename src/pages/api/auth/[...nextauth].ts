@@ -25,8 +25,6 @@ export const authOptions = {
                 },
             },
             async profile(profile) {
-                console.log("callback 체크");
-                console.log(profile);
                 const findUser = {
                     id: "testId",
                     nickname: "testNickName",
@@ -40,7 +38,14 @@ export const authOptions = {
             },    
         }),
     ],
-    callback: {
+    callbacks: {
+        async jwt({ token, trigger, session, user, account, profile }: any) {
+            if (account) {
+                token.accessToken = account.access_token
+                token.id = profile.id
+              }
+              return token;
+        },        
         async session({ session, token }: any) {
             session.user = token.user;
             if (session.user != null && token.hasAcceptedTerms != null) {

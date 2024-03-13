@@ -7,7 +7,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { useState } from "react";
 import type { AppPropsWithLayout } from '@/pages/types';
 
-export default function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) {
+export default function App({ 
+    Component, 
+    pageProps: { session, ...pageProps },
+}: AppPropsWithLayout) {
     const [queryClient] = useState(() => new QueryClient());
     const getLayout = Component.getLayout || "/";
 
