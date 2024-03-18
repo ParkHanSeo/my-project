@@ -14,9 +14,6 @@ type Props = {
 }
 
 export const Layout: React.FC<Props> = ({ children }) => {
-    const handleOAuthLogin = async (type: string) => {
-        const result = await signIn(type, { callbackUrl: "/home" });
-    };    
 
     const router = useRouter();
     const { pathname } = router;
