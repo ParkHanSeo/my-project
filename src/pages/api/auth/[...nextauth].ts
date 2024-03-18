@@ -30,6 +30,18 @@ export const authOptions = {
             }
         }),        
     ],
+    callback: {
+        async session({ session, token, user }: any) {
+            session.user = token.user;
+            if (session.user != null && token.hasAcceptedTerms != null) {
+                session.user.hasAcceptedTerms = token?.hasAcceptedTerms;
+            }
+            return Promise.resolve(session);
+        },
+        async jwt({ token, account, profile }: any) {
+
+        },
+    }
 }
 
 export default NextAuth(authOptions)
