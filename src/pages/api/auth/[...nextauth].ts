@@ -1,18 +1,24 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import KakaoProvider from "next-auth/providers/kakao";
-import { loginCredential } from "./auth";
+import { 
+  loginCredential,
+  kakaoLoginCredential
+} from "./auth";
 
 export const authOptions = {
     providers: [
         KakaoProvider({
-            clientId: process.env.KAKAO_CLIENT_ID!,
-            clientSecret: process.env.KAKAO_CLIENT_SECRET_KEY!,
-            async profile(profile) {
-                return {
-                    id: ""
-                }
-            }
+              clientId: process.env.KAKAO_CLIENT_ID!,
+              clientSecret: process.env.KAKAO_CLIENT_SECRET_KEY!,
+              async profile(profile) {
+                  const res = await kakaoLoginCredential(profile.id);
+                  console.log("데이터 완료");
+                  console.log(res);
+                  return {
+                      id: ""
+                  }
+              }
         }),
         CredentialsProvider({
             name: 'Credentials',
