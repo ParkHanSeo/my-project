@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
-import { Home } from '@/components/Home';
+import { MainHome } from '@/components/MainHome';
 import { useSession } from "next-auth/react";
 
-const MainHome: NextPage = () => {
+const Home: NextPage = () => {
     const { data: session } = useSession();
-    return <Home/>;
+    return <MainHome/>;
 }
-export default MainHome;
+export default Home; 

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ChangeEvent } from "react";
 import styles from './LoginInput.module.scss';
 import { UserProps } from "@/models/pages/userProp";
 
@@ -13,7 +13,7 @@ export const LoginInput: React.FC<Props> = ({
 }) => {
     const [loginData, setLoginData] = useState<UserProps>({ email: "", password: "" });
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setLoginData(prevState => ({
             ...prevState,

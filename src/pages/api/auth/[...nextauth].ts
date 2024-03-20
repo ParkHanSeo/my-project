@@ -8,6 +8,11 @@ export const authOptions = {
         KakaoProvider({
             clientId: process.env.KAKAO_CLIENT_ID!,
             clientSecret: process.env.KAKAO_CLIENT_SECRET_KEY!,
+            async profile(profile) {
+                return {
+                    id: ""
+                }
+            }
         }),
         CredentialsProvider({
             name: 'Credentials',
@@ -39,7 +44,11 @@ export const authOptions = {
             return Promise.resolve(session);
         },
         async jwt({ token, account, profile }: any) {
-
+            if (account) {
+              token.accessToken = account.access_token
+              token.id = profile.id
+            }
+            return Promise.resolve(token);
         },
     }
 }
