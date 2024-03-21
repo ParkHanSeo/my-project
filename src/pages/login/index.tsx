@@ -3,12 +3,7 @@ import { signIn } from "next-auth/react";
 import { LoginInput } from "@/components/LoginInput";
 import { UserLoginProps } from '@/models/pages/userProp';
 import { useSetRecoilState } from "recoil";
-import { atom } from "recoil";
-
-export const loadingState = atom({
-    key: "loadingState",
-    default: false,
-});
+import { loadingState } from '@/hooks/recoil/atoms/loadingState';
 
 const Login: NextPage = () => {
     const setLoading = useSetRecoilState(loadingState);
