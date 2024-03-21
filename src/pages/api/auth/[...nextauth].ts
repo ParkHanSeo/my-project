@@ -13,10 +13,11 @@ export const authOptions = {
               clientSecret: process.env.KAKAO_CLIENT_SECRET_KEY!,
               async profile(profile) {
                   const res = await kakaoLoginCredential(profile.id);
-                  console.log("데이터 완료");
-                  console.log(res);
                   return {
-                      id: ""
+                      id: res.id,
+                      email: res.email,
+                      nickname: res.nickname,
+                      profileImage: res.profileImage,
                   }
               }
         }),
@@ -37,6 +38,7 @@ export const authOptions = {
                 id: res.id,
                 email: res.email,
                 nickname: res.nickname,
+                profileImage: res.profileImage,
               }
             }
         }),        

@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { signIn } from "next-auth/react";
 import { LoginInput } from "@/components/LoginInput";
-import { UserProps } from '@/models/pages/userProp';
+import { UserLoginProps } from '@/models/pages/userProp';
 import { useSetRecoilState } from "recoil";
 import { atom } from "recoil";
 
@@ -13,7 +13,7 @@ export const loadingState = atom({
 const Login: NextPage = () => {
     const setLoading = useSetRecoilState(loadingState);
 
-    const loginClickHandle = async ({ email, password }: UserProps) => {
+    const loginClickHandle = async ({ email, password }: UserLoginProps) => {
         setLoading(true);
         const res = await signIn("credentials", { username: email, password: password, redirect: false });
 

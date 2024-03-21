@@ -11,6 +11,7 @@ export const loginCredential = async (email: string, password: string) => {
         id: findUser.id,
         email: findUser?.email,
         nickname: findUser?.nickname,
+        profileImage: findUser?.nickname,
     };
 }
 
@@ -24,6 +25,7 @@ export const kakaoLoginCredential = async (id: number) => {
             email: "",
             password: "",
             nickname: "",
+            profileImage: "",
             api_id: id
         }
         await setDoc(doc(db, "user", String(user.id)), user);
@@ -55,5 +57,5 @@ export const findUserApiData = async (id: number) => {
         users.push(doc.data());
     });
 
-    return { ...users };
+    return users[0];
 };
