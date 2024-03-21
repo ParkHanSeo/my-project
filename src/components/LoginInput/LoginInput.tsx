@@ -1,17 +1,17 @@
 import React, { useState, useRef, ChangeEvent } from "react";
 import styles from './LoginInput.module.scss';
-import { UserProps } from "@/models/pages/userProp";
+import { UserLoginProps } from "@/models/pages/userProp";
 
 type Props = {
     title: string;
-    loginHandle: (loginData: UserProps) => void;
+    loginHandle: (loginData: UserLoginProps) => void;
 }
 
 export const LoginInput: React.FC<Props> = ({
     title,
     loginHandle,
 }) => {
-    const [loginData, setLoginData] = useState<UserProps>({ email: "", password: "" });
+    const [loginData, setLoginData] = useState<UserLoginProps>({ email: "", password: "" });
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

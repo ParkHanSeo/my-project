@@ -3,5 +3,11 @@ export type UserProps = {
     email?: string;
     password?: string;
     nickname?: string;
-    api_id: number;
+    profileImage?: string;
+    api_id?: number;
+}
+
+export type UserLoginProps = {
+    email: string;
+    password: string;
 }
