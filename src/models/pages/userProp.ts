@@ -11,3 +11,10 @@ export type UserLoginProps = {
     email: string;
     password: string;
 }
+
+export type UserSingupProps = {
+    email?: string;
+    password?: string;
+    nickname?: string;
+    profileImage?: string;    
+}
