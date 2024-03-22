@@ -30,6 +30,7 @@ connect.post(async (req, res) => {
         password: data.password,
         nickname: data.nickname,
         profileImage: data.profileImage,
+        api_id: 0,
     }
     await setDoc(doc(db, "user", String(user.id)), user);
 
