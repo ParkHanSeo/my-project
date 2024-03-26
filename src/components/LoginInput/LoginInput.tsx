@@ -27,17 +27,13 @@ export const LoginInput: React.FC<Props> = ({
     
     return (
         <div className={styles.login}>
-            <div className={styles.loginWrap}>
-                <h1 className={styles.title}>{title}</h1>
-                <div>
-                    <label>이메일</label>
-                    <input type="text" placeholder="아이디 입력" name="email" value={loginData.email} onChange={handleInputChange}/>
-                </div>
-                <div>
-                    <label>비밀번호</label>
-                    <input type="password" placeholder="비밀번호 입력" name="password" value={loginData.password} onChange={handleInputChange}/>
-                </div>
-                <button onClick={loginSubmitHandle}>로그인</button>
+            <div className={styles.loginContainer}>
+                <h2>로그인</h2>
+                <form className={styles.loginForm} action="your_login_endpoint" method="post">
+                    <input type="text" name="email" placeholder="이메일" value={loginData.email} onChange={handleInputChange} />
+                    <input type="password" name="password" placeholder="비밀번호" value={loginData.password} onChange={handleInputChange} />
+                    <button onClick={loginSubmitHandle}>로그인</button>
+                </form>
             </div>
         </div>       
     )
