@@ -15,8 +15,16 @@ export const PageRouter: React.FC<Props> = ({
     const { data: session, status } = useSession();
 
     const pageRouter = () => {
-
+        if('authenticated' === status) {
+            return router.push('/home');
+        } else if('unauthenticated' === status) {
+            return router.push('/');
+        }
     }
+
+    useEffect(() => {
+        pageRouter();
+    }, [session]);
 
     return (
         <>{children}</>
