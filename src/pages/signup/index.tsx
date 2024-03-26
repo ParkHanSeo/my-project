@@ -2,7 +2,9 @@ import { NextPage } from 'next';
 import { SignupInput } from '@/components/SignupInput';
 import { UserSingupProps } from '@/models/pages/userProp';
 import { useSetRecoilState } from "recoil";
-import { loading } from '@/hooks/recoil/atoms/loading';
+import { isLoadingAtom } from '@/hooks/recoil/atoms/loading';
+import { isAllertAtom } from '@/hooks/recoil/atoms/alert';
+import { ALERT_MESSAGE } from '@/constants/alert';
 import { AddUser } from '@/api/user/services/addUser';
 import { AddUserRequest } from '@/models/api/user/AddUserRequest';
 import { AddUserResponse } from '@/models/api/user/AddUserResponse';
@@ -10,21 +12,46 @@ import { getUserEmailDuplicateCheck } from '@/api/user/services/getUserEmailDupl
 import { GetUserEmailDuplicateCheckRequest } from '@/models/api/user/GetUserEmailDuplicateCheckRequest';
 import { GetUserEmailDuplicateCheckResponse } from '@/models/api/user/GetUserEmailDuplicateCheckResponse';
 
+const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+
 const Signup: NextPage = () => {
 
-    const setLoading = useSetRecoilState(loading);
+    const setLoading = useSetRecoilState(isLoadingAtom);
+    const setAllert = useSetRecoilState(isAllertAtom);
+
+    const displayAlertMessage = (message: string) => {
+        const data = { message: message, isShow: true };
+        setAllert(data);
+        setTimeout(() => {
+            setAllert({message: "", isShow: false});
+        }, 2000);
+    }
 
     const signupClickHandle = async (userForm: UserSingupProps) => {
-        if(userForm.email) {
-            const request: GetUserEmailDuplicateCheckRequest = { email: userForm.email };
-            const check: GetUserEmailDuplicateCheckResponse = await getUserEmailDuplicateCheck(request);
-            if(!check) {
-                return;
-            }
-            setLoading(true);
-            const requsetAddData: AddUserRequest = userForm;
-            const res: AddUserResponse = await AddUser(userForm);
-            setLoading(false);
+        singupInputCheck(userForm);
+        
+        setLoading(true);
+        const requsetAddData: AddUserRequest = userForm;
+        const res: AddUserResponse = await AddUser(userForm);
+        setLoading(false);
+    }
+
+    const singupInputCheck = async ({email, password, nickname, profileImage}: UserSingupProps) => {
+        if(email && !regex.test(email)) {
+            displayAlertMessage(ALERT_MESSAGE.INVALID_EMAIL_FORMAT);
+            return;
+        }
+        
+        if(password && password.length < 8) {
+            displayAlertMessage(ALERT_MESSAGE.PASSWORD_CHECK);
+            return
+        }
+
+        const request: GetUserEmailDuplicateCheckRequest = { email: email! };
+        const check: GetUserEmailDuplicateCheckResponse = await getUserEmailDuplicateCheck(request);
+        if(!check) {
+            displayAlertMessage(ALERT_MESSAGE.DUPLICATE_EMAIL);
+            return;
         }
     }
 
