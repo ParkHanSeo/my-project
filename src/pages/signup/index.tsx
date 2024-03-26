@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { SignupInput } from '@/components/SignupInput';
 import { UserSingupProps } from '@/models/pages/userProp';
 import { useSetRecoilState } from "recoil";
-import { loadingState } from '@/hooks/recoil/atoms/loadingState';
+import { loading } from '@/hooks/recoil/atoms/loadingState';
 import { AddUser } from '@/api/user/services/addUser';
 import { AddUserRequest } from '@/models/api/user/AddUserRequest';
 import { AddUserResponse } from '@/models/api/user/AddUserResponse';
@@ -12,7 +12,7 @@ import { GetUserEmailDuplicateCheckResponse } from '@/models/api/user/GetUserEma
 
 const Signup: NextPage = () => {
 
-    const setLoading = useSetRecoilState(loadingState);
+    const setLoading = useSetRecoilState(loading);
 
     const signupClickHandle = async (userForm: UserSingupProps) => {
         if(userForm.email) {
