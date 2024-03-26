@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { Spinner } from "@/components/shared/Spinner/Spinner";
-import { loading } from "@/hooks/recoil/atoms/loadingState";
+import { loading } from "@/hooks/recoil/atoms/loading";
 import { useRecoilValue } from "recoil";
 import { PageRouter } from "@/components/PageRouter/PageRouter";
 import { db } from "@/lib/firebase-config";

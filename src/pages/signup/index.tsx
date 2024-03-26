@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { SignupInput } from '@/components/SignupInput';
 import { UserSingupProps } from '@/models/pages/userProp';
 import { useSetRecoilState } from "recoil";
-import { loading } from '@/hooks/recoil/atoms/loadingState';
+import { loading } from '@/hooks/recoil/atoms/loading';
 import { AddUser } from '@/api/user/services/addUser';
 import { AddUserRequest } from '@/models/api/user/AddUserRequest';
 import { AddUserResponse } from '@/models/api/user/AddUserResponse';
