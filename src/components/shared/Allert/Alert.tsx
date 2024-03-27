@@ -10,7 +10,9 @@ export const Alert = () => {
         <>
             {alertState.isShow && (
                 <div className={styles.alertContainer}>
-                    <p className={styles.alertMessage}>{alertState.message}</p>
+                    <div className={styles.alertContent}>
+                        <div className={styles.alertMessage}>{alertState.message}</div>
+                    </div>
                 </div>
             )}
         </>
