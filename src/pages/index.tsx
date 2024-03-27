@@ -1,4 +1,3 @@
-// import { requestPermission } from "@/utils/Notification";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 
@@ -11,6 +10,7 @@ export default function index() {
     return (
             <div className="main">
                 <div className="main_wrap">
+                    <img src="/img/star_logo.png" alt="" />
                     <Link href="/login" className="link">
                         로그인
                     </Link>

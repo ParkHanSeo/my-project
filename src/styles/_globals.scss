@@ -22,28 +22,31 @@ body {
 }
 
 .main {
-    // position: relative;
     height: 100%;
-    // background-color: ;
+    background-color: #f8d3a2;
     .link {
         background-color: #fff;
         border: 0;
-        color: #666;
+        color: #646464;
         display: inline-block;
         padding: 10px;
         text-align: center;
         text-decoration: none;
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
     }
     .kakao_login_button {
         background-color: #FFC700;
-        color: #666;
+        color: #646464;
         display: inline-block;
         padding: 10px;
+        font-size: 15px;
         text-align: center;
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        border: 0px;
     }
 }
 
