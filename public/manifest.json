@@ -6,5 +6,17 @@
     "orientation": "landscape",
     "background_color": "#1689D8",
     "theme_color": "#1689D8",
-    "start_url": "/"
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "/image/icon-196x196.png",
+            "sizes": "196x196",
+            "type": "image/png"
+        },
+        {
+            "src": "/image/icon-310x310.png",
+            "sizes": "310x310",
+            "type": "image/png"
+        }
+    ]
 }
