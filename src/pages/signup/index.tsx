@@ -28,12 +28,13 @@ const Signup: NextPage = () => {
     }
 
     const signupClickHandle = async (userForm: UserSingupProps) => {
-        singupInputCheck(userForm);
-        
-        setLoading(true);
-        const requsetAddData: AddUserRequest = userForm;
-        const res: AddUserResponse = await AddUser(userForm);
-        setLoading(false);
+        let flag = await singupInputCheck(userForm);
+        if(flag) {
+            setLoading(true);
+            const requsetAddData: AddUserRequest = userForm;
+            const res: AddUserResponse = await AddUser(requsetAddData);
+            setLoading(false);
+        }
     }
 
     const singupInputCheck = async ({email, password, nickname, profileImage}: UserSingupProps) => {
@@ -42,17 +43,25 @@ const Signup: NextPage = () => {
             return;
         }
         
-        if(password && password.length < 8) {
+        if(password === "" && password.length < 8) {
             displayAlertMessage(ALERT_MESSAGE.PASSWORD_CHECK);
-            return
+            return;
+        }
+
+        if(nickname === "") {
+            displayAlertMessage(ALERT_MESSAGE.NICKNAME_CHECK);
+            return;
         }
 
         const request: GetUserEmailDuplicateCheckRequest = { email: email! };
         const check: GetUserEmailDuplicateCheckResponse = await getUserEmailDuplicateCheck(request);
-        if(!check) {
+
+        if(!check.data) {
             displayAlertMessage(ALERT_MESSAGE.DUPLICATE_EMAIL);
             return;
         }
+        
+        return true;
     }
 
     return (
