@@ -9,12 +9,12 @@
     "start_url": "/",
     "icons": [
         {
-            "src": "/image/icon-196x196.png",
+            "src": "/img/logo-196x196.png",
             "sizes": "196x196",
             "type": "image/png"
         },
         {
-            "src": "/image/icon-310x310.png",
+            "src": "/img/icon-310x310.png",
             "sizes": "310x310",
             "type": "image/png"
         }
