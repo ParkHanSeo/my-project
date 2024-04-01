@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import { useRouter } from "next/router";
 import { SignupInput } from '@/components/SignupInput';
 import { UserSingupProps } from '@/models/pages/userProp';
 import { useSetRecoilState } from "recoil";
@@ -15,6 +16,7 @@ import { GetUserEmailDuplicateCheckResponse } from '@/models/api/user/GetUserEma
 const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 
 const Signup: NextPage = () => {
+    const router = useRouter();
 
     const setLoading = useSetRecoilState(isLoadingAtom);
     const setAllert = useSetRecoilState(isAllertAtom);
@@ -28,13 +30,13 @@ const Signup: NextPage = () => {
     }
 
     const signupClickHandle = async (userForm: UserSingupProps) => {
-        let flag = await singupInputCheck(userForm);
-        if(flag) {
-            setLoading(true);
-            const requsetAddData: AddUserRequest = userForm;
-            const res: AddUserResponse = await AddUser(requsetAddData);
-            setLoading(false);
-        }
+        await singupInputCheck(userForm);
+        setLoading(true);
+        const requsetAddData: AddUserRequest = userForm;
+        const res: AddUserResponse = await AddUser(requsetAddData);
+        setLoading(false);
+        displayAlertMessage(ALERT_MESSAGE.SINGUP_SUCCESS);
+        router.push("/login");
     }
 
     const singupInputCheck = async ({email, password, nickname, profileImage}: UserSingupProps) => {
@@ -55,13 +57,12 @@ const Signup: NextPage = () => {
 
         const request: GetUserEmailDuplicateCheckRequest = { email: email! };
         const check: GetUserEmailDuplicateCheckResponse = await getUserEmailDuplicateCheck(request);
-
+        
         if(!check.data) {
             displayAlertMessage(ALERT_MESSAGE.DUPLICATE_EMAIL);
             return;
         }
-        
-        return true;
+
     }
 
     return (
