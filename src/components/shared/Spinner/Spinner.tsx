@@ -1,11 +1,12 @@
 import styles from './Spinner.module.scss';
 import spinner from '@/assets/loading-spinner.gif';
+import Image from 'next/image';
 
 export const Spinner = () => {
     return (
         <div className={styles.loadingBackground}>
             <div className={styles.loadingText}></div>
-            <img src={spinner.src} alt="" />
+            <Image src={spinner} alt="" />
         </div>
     )
 }

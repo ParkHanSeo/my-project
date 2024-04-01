@@ -37,17 +37,20 @@ body {
         border-radius: 10px;
     }
     .kakao_login_button {
-        background-color: #FFC700;
-        color: #646464;
-        display: inline-block;
-        padding: 10px;
-        font-size: 15px;
-        text-align: center;
-        cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        border: 0px;
+        width: 100%;
     }
+    // .kakao_login_button {
+    //     background-color: #FFC700;
+    //     color: #646464;
+    //     display: inline-block;
+    //     padding: 10px;
+    //     font-size: 15px;
+    //     text-align: center;
+    //     cursor: pointer;
+    //     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    //     border-radius: 10px;
+    //     border: 0px;
+    // }
 }
 
 .main_wrap {

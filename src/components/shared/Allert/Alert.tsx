@@ -1,6 +1,6 @@
 import { isAllertAtom } from '@/hooks/recoil/atoms/alert';
 import styles from './Alert.module.scss';
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 
 export const Alert = () => {
 
