@@ -12,6 +12,12 @@
     }
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 body {
     height: 100vh;
     color: #2d2d2d;
@@ -40,18 +46,6 @@ body {
         width: 100%;
         cursor: pointer;
     }
-    // .kakao_login_button {
-    //     background-color: #FFC700;
-    //     color: #646464;
-    //     display: inline-block;
-    //     padding: 10px;
-    //     font-size: 15px;
-    //     text-align: center;
-    //     cursor: pointer;
-    //     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    //     border-radius: 10px;
-    //     border: 0px;
-    // }
 }
 
 .main_wrap {
