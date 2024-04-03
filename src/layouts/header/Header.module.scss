@@ -1,0 +1,110 @@
+@use 'src/styles/variables';
+
+.headerWrapper {
+    position: sticky;
+    width: 100%;
+    z-index: 100;
+    background-color: hsla(0, 0%, 100%, .9);
+    top: 0;
+}
+
+.header {
+    display: flex;
+    position: relative;
+    height: 64px;
+    border-bottom: .5px solid #dfdfdf;
+    padding: 0 14px;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: hsla(0, 0%, 100%, 0);
+    transition: background-color 0s;
+    transition-delay: .3s;
+}
+
+.menu {
+    display: block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    -webkit-appearance: button;
+    outline: 0;
+    &::before {
+        display: block;
+        width: 16px;
+        height: 2px;
+        margin: 0 auto;
+        background-color: #333;
+        content: "";
+        border-radius: 1px;
+        transition: all .3s ease-in-out;
+    }
+    &::after {
+        display: block;
+        width: 16px;
+        height: 2px;
+        margin: 4px auto 0;
+        background-color: #333;
+        content: "";
+        border-radius: 1px;
+        transition: all .3s ease-in-out;
+    }
+    span {
+        display: block;
+        width: 16px;
+        height: 2px;
+        margin: 4px auto 0;
+        background-color: #333;
+        content: "";
+        border-radius: 1px;
+        transition: all .3s ease-in-out;
+        overflow: hidden;
+        text-indent: 100%;
+        white-space: nowrap;
+    }
+    &.active {
+        display: block;
+        span {
+            opacity: 0;
+        }
+        &::before {
+            width: 18px;
+            -webkit-transform: translateY(6px) rotate(45deg);
+            transform: translateY(6px) rotate(45deg);
+        }
+        &::after {
+            width: 18px;
+            -webkit-transform: translateY(-6px) rotate(-45deg);
+            transform: translateY(-6px) rotate(-45deg);
+        }
+    }
+}
+
+.logoWrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.navBoxWrapper{
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    button {
+        cursor: pointer;
+        background: #333;
+        border-radius: 100px;
+        padding: 7px 15px;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: -0.6px;
+        color: #fff;
+        text-align: center;
+    }
+}
