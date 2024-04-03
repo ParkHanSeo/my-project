@@ -12,34 +12,31 @@
 }
 
 .signForm {
+    font-weight: bold;
+
     input[type="text"],
     input[type="email"],
     input[type="password"],
     input[type="file"] {
         width: 100%;
         padding: 10px;
+        margin-top: 10px;
         margin-bottom: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
         box-sizing: border-box;
-    }
-    input[type="file"] {
-        margin-top: 10px;
-    }
-    label {
-        font-weight: bold;
     }
 }
 
 .subitButton {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #d28b41;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     &:hover {
-        background-color: #0056b3;
+        background-color: #a7651e;
     }
 }

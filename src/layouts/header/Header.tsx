@@ -68,7 +68,7 @@ export const Header: React.VFC<Props> = ({
                             <li><a href="#">고객센터</a></li>
                         </ul> */}
                     </nav> 
-                    <button>로그인</button>
+                    <button className={styles.navBoxButton}>로그인</button>
                 </div>
             </div>
         </div>

@@ -10,6 +10,7 @@ export default function Document() {
                 <link rel="manifest" href="/manifest.json" />
                 <link rel="apple-touch-icon" sizes="150x150" href="/image/mstile-150x150.png" />
                 <link rel="apple-touch-icon" sizes="310x310" href="/image/mstile-310x310.png" />
+                <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'></link>
                 <meta name="theme-color" content="#1689D8" />
             </Head>
             <body>
