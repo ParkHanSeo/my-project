@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import styles from './SignupInput.module.scss';
 import { UserSingupProps } from '@/models/pages/userProp';
 
@@ -27,35 +27,30 @@ export const SignupInput: React.FC<Props> = ({
         }));
     };
 
-    const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files && e.target.files[0].name;
-        setSignupData(prevState => ({
-            ...prevState,
-            [e.target.name]: file
-        }));
-    }
-
     const signupSubmitHandle = () => {
         singupHandle(signupData);
     }
 
     return (
-        <div className={styles.container}>
-            <h2 className={styles.title}>{title}</h2> 
-            <div className={styles.signForm}>
-                <label htmlFor="email">이메일:</label>
-                <input type="email" name="email" onChange={handleInputChange} />
-
-                <label htmlFor="password">비밀번호:</label>
-                <input type="password" name="password" onChange={handleInputChange} />
-
-                <label htmlFor="nickname">닉네임:</label>
-                <input type="text" name="nickname" onChange={handleInputChange} />
-
-                <label htmlFor="profileImage">프로필 이미지:</label>
-                <input type="file" name="profileImage" onChange={handleFileInputChange} />
-
-                <button className={styles.subitButton} onClick={signupSubmitHandle}>가입하기</button>
+        <div className={styles.signUp}>
+            <div className={styles.container}>
+                <h2 className={styles.title}>{title}</h2>
+                <p className={styles.subTitle}>만나뵙게되서 반갑습니다 시어입니다.</p>
+                <div className={styles.signForm}>
+                    <div className={styles.input}>
+                        <span className={styles.label}>이메일</span>
+                        <input type="email" name="email" onChange={handleInputChange} placeholder="이메일 입력" />
+                    </div>
+                    <div className={styles.input}>
+                        <span className={styles.label}>비밀번호 8자리 이상</span>
+                        <input type="password" name="password" onChange={handleInputChange} placeholder="비밀번호 입력" />
+                    </div>
+                    <div className={styles.input}>
+                        <span className={styles.label}>닉네임</span>
+                        <input type="text" name="nickname" onChange={handleInputChange} placeholder="닉네임 입력" />
+                    </div>
+                    <button className={styles.subitButton} onClick={signupSubmitHandle}>가입하기</button>
+                </div>
             </div>
         </div>
     )

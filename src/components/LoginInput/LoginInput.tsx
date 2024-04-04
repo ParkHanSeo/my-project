@@ -52,7 +52,7 @@ export const LoginInput: React.FC<Props> = ({
                     </div>
                     <div>
                         <span className={styles.label}>비밀번호</span>
-                        <input type="password" name="password" placeholder="비밀번호" value={loginData.password} onChange={handleInputChange} />
+                        <input type="password" name="password" placeholder="비밀번호 입력" value={loginData.password} onChange={handleInputChange} />
                     </div>
                     <button 
                         className={styles.loginButton} 

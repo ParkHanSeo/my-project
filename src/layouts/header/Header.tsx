@@ -69,7 +69,11 @@ export const Header: React.VFC<Props> = ({
                 >
                     <SideMenu />
                 </Drawer>
-                <button className={styles.navBoxButton}>로그인</button>
+                <button className={styles.navBoxButton}>
+                    <Link href={"/login"} className={styles.loginLink}>
+                        로그인
+                    </Link>
+                </button>
             </div>
         </div>
     )
