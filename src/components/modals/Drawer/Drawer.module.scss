@@ -9,21 +9,8 @@
 	left: 0;
 }
 
-.slideFromRight {
-	right: 0;
-}
-
-.enterSlideFromRight {
-	right: -100%;
-}
-
 .enterSlideFromLeft {
 	left: -100%;
-}
-
-.enterActiveSlideFromRight {
-	right: 0;
-	transition: all 0.3s;
 }
 
 .enterActiveSlideFromLeft {
@@ -32,5 +19,6 @@
 }
 
 .exit {
-	display: none;
+	left: -100%;
+	transition: all 0.3s;
 }

@@ -18,7 +18,7 @@ export const Drawer: React.FC<Props> = ({
 	top = 0,
 	className,
 }) => {
-    console.log(slideFrom);
+    
 	const ref = useRef(null);
 
 	return (
