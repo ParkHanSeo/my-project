@@ -1,5 +1,6 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import { signIn, signOut } from "next-auth/react";
+import Link from "next/link";
 import Image from 'next/image';
 import styles from './LoginInput.module.scss';
 import { UserLoginProps } from "@/models/pages/userProp";
@@ -61,10 +62,14 @@ export const LoginInput: React.FC<Props> = ({
 
                     <ul className={styles.loginSubMenu}>
                         <li>
-                            <a href="#">회원가입</a>
+                            <Link className={styles.link} href="/signup">
+                                회원가입
+                            </Link>
                         </li>
                         <li>
-                            <a href="">계정 정보 찾기</a>
+                            <Link className={styles.link} href="#">
+                                계정 정보 찾기
+                            </Link>
                         </li>
                     </ul>
                     

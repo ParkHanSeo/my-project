@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from 'next/image';
-import starLogo from '@/assets/common/logo-290x290.png';
+import siarLogo from '@/assets/common/logo-290x290.png';
 
 export default function index() {
     
     return (
             <div className="main">
                 <div className="main_wrap">
-                    <Image src={starLogo} alt="" />
+                    <Image src={siarLogo} alt="사이트 로고" />
                     <Link href="/login" className="link">
                         로그인
                     </Link>
