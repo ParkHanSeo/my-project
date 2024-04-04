@@ -1,0 +1,42 @@
+.section {
+    background-color: #d28b41;
+    padding: 45px 0;
+}
+
+.sectionWrap {
+    margin: 0 auto;
+    max-width: 1440px;
+    overflow: hidden;
+}
+
+.textWrap {
+    text-align: center;
+    h2 {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 130%;
+        letter-spacing: -.01em;
+        color: #242424;
+        margin-bottom: 24px;
+        -webkit-animation: section-common 2s forwards;
+        animation: section-common 2s forwards;
+    }
+}
+
+.listWrap {
+    padding: 0 24px;
+    max-width: none;
+}
+
+@keyframes section-common {
+    0% {
+        -webkit-transform: translate3d(0, 50%, 0);
+        transform: translate3d(0, 50%, 0);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
