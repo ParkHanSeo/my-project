@@ -4,7 +4,7 @@ import classNames from "classnames";
 import styles from './Header.module.scss';
 import Link from "next/link";
 import Image from 'next/image';
-import logoImage from '@/assets/common/icon/icon-57x57.png';
+import logoImage from '@/assets/common/icon/siar_text_logo.png';
 import { Drawer } from "@/components/modals/Drawer/Drawer";
 import { SideMenu } from "./SideMenu/SideMenu";
 
@@ -58,7 +58,7 @@ export const Header: React.VFC<Props> = ({
                         className={styles.logoImage}
                         href={"/"}
                     >
-                        <Image src={logoImage} alt=""/>
+                        <Image src={logoImage} alt="" className={styles.logo}/>
                     </Link>
                 </div>
                 <Drawer 
