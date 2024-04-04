@@ -18,6 +18,6 @@ const Login: NextPage = () => {
         setLoading(false);
     }
 
-    return <LoginInput title="로그인" loginHandle={loginClickHandle} />;
+    return <LoginInput loginHandle={loginClickHandle} />;
 }
 export default Login;
