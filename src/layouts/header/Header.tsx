@@ -5,6 +5,8 @@ import styles from './Header.module.scss';
 import Link from "next/link";
 import Image from 'next/image';
 import logoImage from '@/assets/common/icon/icon-57x57.png';
+import { Drawer } from "@/components/modals/Drawer/Drawer";
+import { SideMenu } from "./SideMenu/SideMenu";
 
 type Props = {
 	showsServiceMenu: boolean;
@@ -59,17 +61,15 @@ export const Header: React.VFC<Props> = ({
                         <Image src={logoImage} alt=""/>
                     </Link>
                 </div>
-                <div className={styles.navBoxWrapper}>
-                    <nav>
-                        {/* <ul>
-                            <li><a href="#">기업문의</a></li> 
-                            <li><a href="#">회사소개</a></li> 
-                            <li><a href="#">계정관리</a></li> 
-                            <li><a href="#">고객센터</a></li>
-                        </ul> */}
-                    </nav> 
-                    <button className={styles.navBoxButton}>로그인</button>
-                </div>
+                <Drawer 
+                    isOpen={showsServiceMenu}
+                    top={50}
+                    slideFrom="left"
+                    className={styles.serviceMenu}
+                >
+                    <SideMenu />
+                </Drawer>
+                <button className={styles.navBoxButton}>로그인</button>
             </div>
         </div>
     )
