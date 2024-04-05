@@ -11,12 +11,11 @@
     margin: 0 auto;
     background: url(../assets/note.jpg);
     background-repeat: no-repeat;
-    background-position: 125% 85%;
     background-size: 460px;
 }
 
 .textWrap {
-    padding: 64px 24px;
+    padding: 64px 24px 64px 80px;
     h1 {
         background-size: contain;
         -webkit-animation: section-common 1.8s forwards;
