@@ -6,10 +6,10 @@ import { useSetRecoilState } from "recoil";
 import { isLoadingAtom } from '@/hooks/recoil/atoms/loading';
 import { isAllertAtom } from '@/hooks/recoil/atoms/alert';
 import { ALERT_MESSAGE } from '@/constants/alert';
-import { AddUser } from '@/api/user/services/addUser';
+import { AddUser } from '@/api/services/user/addUser';
 import { AddUserRequest } from '@/models/api/user/AddUserRequest';
 import { AddUserResponse } from '@/models/api/user/AddUserResponse';
-import { getUserEmailDuplicateCheck } from '@/api/user/services/getUserEmailDuplicate';
+import { getUserEmailDuplicateCheck } from '@/api/services/user/getUserEmailDuplicate';
 import { GetUserEmailDuplicateCheckRequest } from '@/models/api/user/GetUserEmailDuplicateCheckRequest';
 import { GetUserEmailDuplicateCheckResponse } from '@/models/api/user/GetUserEmailDuplicateCheckResponse';
 
