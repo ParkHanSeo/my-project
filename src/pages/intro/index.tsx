@@ -5,6 +5,7 @@ import styles from './Intro.module.scss';
 import { FirstSection } from './FirstSection/FirstSection';
 import { SecondSection } from './SecondSection/SecondSection';
 import { StoryBookSection } from './StoryBookSection/StoryBookSection';
+import { BestsellerSection } from './BestsellerSection/BestsellerSection';
 import { getAladinItemList } from '@/api/services/book/getAladinItemList';
 import { AladinItemListResponse } from '@/models/api/book/AladinItemListResponse';
 
@@ -39,7 +40,8 @@ const Intro: NextPage = () => {
         <div>
             <FirstSection />
             <SecondSection />
-            <StoryBookSection item={props?.bannerBookList.data.item || []}/>
+            <StoryBookSection />
+            <BestsellerSection item={props?.bannerBookList.data.item || []}/>
         </div>
     )
 }

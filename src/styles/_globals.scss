@@ -32,6 +32,13 @@ body {
     color: #2d2d2d;
 }
 
+img {
+    max-width: 100%;
+    vertical-align: top;
+    border-style: none;
+    pointer-events: none;
+}
+
 #__next {
     height: 100vh;
 }
