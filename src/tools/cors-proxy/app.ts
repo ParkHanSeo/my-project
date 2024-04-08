@@ -22,9 +22,9 @@ const app = express();
 app.use(cors());
 
 app.get("/bestseller", async (req, res) => {
-	const ttbKey = req.query.TTBKEY;
+	const { TTBKey } = req.query;
 	const queryType = "Bestseller";
-	const aladinApiUrl = `${aladinApiBaseUrl}?ttbkey=${ttbKey}&QueryType=${queryType}&MaxResults=100&start=1&SearchTarget=Book&output=js&Cover=Big&CategoryId&Version=20131101`;
+	const aladinApiUrl = `${aladinApiBaseUrl}?ttbkey=${TTBKey}&QueryType=${queryType}&MaxResults=10&start=1&SearchTarget=Book&output=js&Cover=Big&CategoryId&Version=20131101`;
 	try {
 		const data = await fetchData(aladinApiUrl);
 		res.json(data);
