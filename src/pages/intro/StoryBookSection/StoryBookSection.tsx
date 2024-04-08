@@ -1,12 +1,7 @@
 import styles from './StoryBookSection.module.scss';
-import { AladinItem } from '@/models/api/book/AladinItemListResponse';
 
-type Props = {
-    item: AladinItem[];
-}
+export const StoryBookSection: React.FC<{}> = ({
 
-export const StoryBookSection: React.FC<Props> = ({
-    item
 }) => {
     return (
         <section className={styles.section}>
