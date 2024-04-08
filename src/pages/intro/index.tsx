@@ -9,12 +9,7 @@ import { AladinItemListResponse } from '@/models/api/book/AladinItemListResponse
 const Intro: NextPage = () => {
 
     const testClickHandle = async () => {
-        const req: AladinItemListRequest = {
-            QueryType: 'ItemNewAll',
-            Version: 20131101,
-            SearchTarget: 'Book',
-        }
-        const res: AladinItemListResponse = await getAladinItemList(req);
+        const res: AladinItemListResponse = await getAladinItemList();
         console.log(res);
     }
 
