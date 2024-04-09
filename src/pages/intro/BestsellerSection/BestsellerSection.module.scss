@@ -56,12 +56,6 @@
     padding-right: 24px;
 }
 
-.slideWrapper {
-    will-change: transform;
-    pointer-events: none;
-    touch-action: pan-x;
-}
-
 @keyframes section-common {
     0% {
         -webkit-transform: translate3d(0, 50%, 0);

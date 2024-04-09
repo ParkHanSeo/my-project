@@ -11,9 +11,9 @@ export const BestsellerTile: React.VFC<Props> = ({
     data
 }) => {
     return (
-        <li className={styles.item}>
-            <div className={styles.books}>
-                <Link className={styles.bookLink} href="#">
+        <Link href={`/detail/${data.isbn}`}>
+            <li className={styles.item}>
+                <div className={styles.books}>
                     <div className={styles.thumbnail}>
                         <div className={styles.thumbnailInner}>
                             <div className={styles.bookPicture}>
@@ -34,8 +34,8 @@ export const BestsellerTile: React.VFC<Props> = ({
                             {data.publisher}
                         </p>
                     </div>
-                </Link>
-            </div>
-        </li>
+                </div>
+            </li>
+        </Link>
     )
 }
