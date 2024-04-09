@@ -12,15 +12,32 @@ export const PageRouter: React.FC<Props> = ({
 
     const router = useRouter();
     const { pathname } = router;
+
     const { data: session, status } = useSession();
 
+    const authURLs = ["/", "/login"];
+
     const pageRouter = () => {
-        if('authenticated' === status) {
-            return router.push('/home');
-        } else if('unauthenticated' === status) {
-            return router.push('/');
+        if(authURLs.includes(pathname)){
+            if('authenticated' === status) {
+                return router.push('/home');
+            }
+        } else {
+            if('unauthenticated' === status) {
+                return router.push('/');
+            }
+            if(pathname.includes("detail")) {
+                return router.push('/detail');
+            }
         }
     }
+
+    // 백업
+    // if('authenticated' === status) {
+    //     return router.push('/home');
+    // } else if('unauthenticated' === status) {
+    //     return router.push('/login');
+    // }
 
     useEffect(() => {
         pageRouter();
