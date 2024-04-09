@@ -35,12 +35,13 @@
 }
 
 .bookSlide {
-    overflow: hidden;
+    // overflow: hidden;
     cursor: -webkit-grab;
     cursor: grab;
     -ms-overflow-style: none;
     scrollbar-width: none;
     margin: 0;
+    overflow-x: auto;
 }
 
 .slideWrapper {
@@ -58,6 +59,7 @@
 .slideWrapper {
     will-change: transform;
     pointer-events: none;
+    touch-action: pan-x;
 }
 
 @keyframes section-common {
