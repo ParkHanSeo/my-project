@@ -1,17 +1,41 @@
 import styles from './BestsellerSection.module.scss';
+import { useState, TouchEvent } from 'react';
 import { AladinItem } from '@/models/api/book/AladinItemListResponse';
+import { BestsellerTile } from './BestsellerTile/BestsellerTile';
 import Link from "next/link";
 
 type Props = {
-    item: AladinItem[];
+    itemList: AladinItem[];
 }
 
 export const BestsellerSection: React.FC<Props> = ({
-    item
+    itemList
 }) => {
-    console.log(item);
-    if(item.length >= 1) {
-        console.log(item[1].author?.split(',').find(data => data.includes('지은이')));
+
+    const [ touchX, setTouchX ] = useState(0);
+
+    const onTouchStartHandle = (e: TouchEvent<HTMLUListElement>) => {
+        setTouchX(e.changedTouches[0].pageX);
+    }
+
+    const onTouchEndHandle = (e: TouchEvent<HTMLUListElement>) => {
+        const distanceX = touchX - e.changedTouches[0].pageX;
+        const targetElement = e.target as HTMLElement;
+        const targetUl = targetElement.closest('ul');
+        
+        if (targetUl) {
+            const targetUlWidth = targetUl.offsetWidth / 2;
+            const currentLeft = parseFloat(targetUl.style.left || '0');
+            const newLeft = Math.abs(currentLeft) + distanceX;
+    
+            if (newLeft < 0) {
+                targetUl.style.left = '0px';
+            } else if (newLeft < targetUlWidth) {
+                targetUl.style.left = `-${newLeft}px`;
+            } else {
+                targetUl.style.left = `-${targetUlWidth}px`;
+            }
+        }
     }
 
     return (
@@ -26,32 +50,13 @@ export const BestsellerSection: React.FC<Props> = ({
             <div className={styles.bookList}>
                 <div className={styles.bookSheif}>
                     <div className={styles.bookSlide}>
-                        <ul className={styles.slideWrapper}>
-                            {item.map(data => {
+                        <ul className={styles.slideWrapper}
+                            onTouchStart={onTouchStartHandle} 
+                            onTouchEnd={onTouchEndHandle}
+                        >
+                            {itemList.map(item => {
                                 return (
-                                    <li className={styles.item}>
-                                        <div className={styles.books}>
-                                            <Link className={styles.bookLink} href="#">
-                                                <div className={styles.thumbnail}>
-                                                    <div className={styles.thumbnailInner}>
-                                                        <div className={styles.bookPicture}>
-                                                            <picture>
-                                                                <img className={styles.bookImage} src={data.cover} alt="" />
-                                                            </picture>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className={styles.textItem}>
-                                                    <p className={styles.textTitle}>
-                                                        {data.title}
-                                                    </p>
-                                                    <p className={styles.textAuthor}>
-                                                        {data.author?.split(',').find(data => data.includes('지은이'))}
-                                                    </p>
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    </li>
+                                    <BestsellerTile data={item} />
                                 )
                             })}
                         </ul>

@@ -41,7 +41,7 @@ const Intro: NextPage = () => {
             <FirstSection />
             <SecondSection />
             <StoryBookSection />
-            <BestsellerSection item={props?.bannerBookList.data.item || []}/>
+            <BestsellerSection itemList={props?.bannerBookList.data.item || []}/>
         </div>
     )
 }
