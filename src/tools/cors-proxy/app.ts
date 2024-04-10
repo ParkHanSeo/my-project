@@ -31,7 +31,17 @@ app.get("/bestseller", async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ error: error });
 	}
-	
+})
+
+app.get("/searchBook", async (req, res) => {
+	const { TTBKey, isbn } = req.query;
+	const aladinApiUrl = `${aladinApiSearchUrl}?ttbkey=${TTBKey}&itemIdType=ISBN&ItemId=${isbn}&output=js&Version=20131101&OptResult=ebookList,usedList,reviewList`;
+	try {
+		const data = await fetchData(aladinApiUrl);
+		res.json(data);
+	} catch (error) {
+		res.status(500).json({ error: error });
+	}
 })
 
 app.listen(config.port);
