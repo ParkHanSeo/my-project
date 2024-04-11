@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { getAladinItem } from '@/api/services/book/getAladinItem';
 import { AladinItemReqeust } from '@/models/api/book/AladinItemReqeust';
 import { AladinItemResponse } from '@/models/api/book/AladinItemListResponse';
+import { BookDetail } from '@/components/BookDetail';
 
 export type OptionalQuery = SharedOptionalQuery;
 
@@ -41,9 +42,7 @@ const BookDetailPage: NextPage = () => {
     }, [load, router.isReady])
 
     return (
-        <div>
-            Check
-        </div>
+        <BookDetail book={props?.book || {}} />
     )
 }
 
