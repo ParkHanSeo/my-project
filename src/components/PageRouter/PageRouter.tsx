@@ -20,14 +20,14 @@ export const PageRouter: React.FC<Props> = ({
     const pageRouter = () => {
         if(authURLs.includes(pathname)){
             if('authenticated' === status) {
+                if(pathname.includes("detail")) {
+                    return router.push('/detail');
+                }
                 return router.push('/home');
             }
         } else {
             if('unauthenticated' === status) {
                 return router.push('/');
-            }
-            if(pathname.includes("detail")) {
-                return router.push('/detail');
             }
         }
     }

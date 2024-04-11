@@ -19,13 +19,14 @@ export interface AladinItemListResponse extends ApiResponse {
 export interface AladinItemResponse {
     title?: string; // 상품명
     link?: string; // 상품 링크 URL
+    categoryName?: string;
     author?: string; // 저자/아티스트
     pubdate?: string; // 출간일(출시일) 날짜
     description?: string; // 상품설명 (요약)
     isbn?: string; // 10자리 ISBN
     isbn13?: string; // 13자리 ISBN
-    pricesales?: number; // 판매가
-    pricestandard?: number; // 정가
+    priceSales?: number; // 판매가
+    priceStandard?: number; // 정가
     mallType?: "BOOK" | "MUSIC" | "DVD" | "FOREIGN" | "EBOOK" | "USED"; // 상품의 몰타입
     stockstatus?: string; // 재고상태
     mileage?: number; // 마일리지
@@ -85,5 +86,6 @@ export interface AladinItemResponse {
             fileType: string; // 전자책의 포맷정보
             fileSize: number; // 전자책의 용량정보 (byte단위)
         }[];
+        itemPage: number;
     };
 }

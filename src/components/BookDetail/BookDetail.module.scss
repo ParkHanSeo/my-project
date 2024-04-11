@@ -16,6 +16,7 @@
     padding-bottom: 16px;
     padding-top: 0;
     position: relative;
+    border-bottom: 12px solid #f7f7f7;
 }
 
 .thombnail {
@@ -53,4 +54,66 @@
     position: relative;
     max-height: unset;
     padding-top: 0;
+}
+
+.bookData {
+    width: 100%;
+    background: linear-gradient(90deg, #FFF 50.52%, rgba(255, 255, 255, 0) 100%);
+}
+
+.bookInfo {
+    padding: 0 24px;
+}
+
+.bookName {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookAuthor {
+    font-size: 14px;
+    color: #8b8b8b;
+    margin-bottom: 8px;
+}
+
+.bookSubData {
+    background-color: #fafaf6;
+    margin: 0 -24px;
+    display: flex;
+    overflow: hidden;
+    cursor: grab;
+    scrollbar-width: none;
+    overflow-x: auto;
+}
+
+.detailSlide {
+    display: inline-flex;
+    height: 100px;
+    align-items: center;
+    padding-top: 0;
+}
+
+.slideItem {
+    width: 140px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    padding: 20px 16px;
+    p {
+        font-size: 12px;
+        color: #8b8b8b;
+    }
+    strong {
+        color: #555;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
 }

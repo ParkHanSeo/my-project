@@ -18,6 +18,7 @@ export const authOptions = {
                       email: res.email,
                       nickname: res.nickname,
                       profileImage: res.profileImage,
+                      api_id: res.api_id
                   }
               }
         }),

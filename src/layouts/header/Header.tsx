@@ -26,8 +26,7 @@ export const Header: React.VFC<Props> = ({
     const [menuActive, setMenuActive] = useState(false);
     
     const { data: session, status } = useSession();
-    console.log("세션 데이터");
-    console.log(status);
+
     const onStartToChangeRoute = useCallback(() => {
 		if (menuActive) {
 			setMenuActive(false);
