@@ -12,11 +12,11 @@ export interface AladinItemListResponse extends ApiResponse {
         query: string; // API로 조회한 쿼리
         searchCategoryId?: number; // 분야로 조회한 경우 해당 분야의 ID
         searchCategoryName?: string; // 분야로 조회한 경우 해당 분야의 분야명
-        item?: AladinItem[]; // 상품정보
+        item?: AladinItemResponse[]; // 상품정보
     }
 }
 
-export interface AladinItem {
+export interface AladinItemResponse {
     title?: string; // 상품명
     link?: string; // 상품 링크 URL
     author?: string; // 저자/아티스트

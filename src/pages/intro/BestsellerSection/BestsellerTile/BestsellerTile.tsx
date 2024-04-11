@@ -1,10 +1,10 @@
 import React from "react";
-import { AladinItem } from '@/models/api/book/AladinItemListResponse';
+import { AladinItemResponse } from '@/models/api/book/AladinItemListResponse';
 import Link from "next/link";
 import styles from './BestsellerTile.module.scss';
 
 type Props = {
-    data: AladinItem;
+    data: AladinItemResponse;
 }
 
 export const BestsellerTile: React.VFC<Props> = ({

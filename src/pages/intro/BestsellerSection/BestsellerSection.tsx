@@ -1,11 +1,11 @@
 import styles from './BestsellerSection.module.scss';
 import { useState, TouchEvent } from 'react';
-import { AladinItem } from '@/models/api/book/AladinItemListResponse';
+import { AladinItemResponse } from '@/models/api/book/AladinItemListResponse';
 import { BestsellerTile } from './BestsellerTile/BestsellerTile';
 import Link from "next/link";
 
 type Props = {
-    itemList: AladinItem[];
+    itemList: AladinItemResponse[];
 }
 
 export const BestsellerSection: React.FC<Props> = ({
