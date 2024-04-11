@@ -33,9 +33,10 @@ app.get("/bestseller", async (req, res) => {
 	}
 })
 
-app.get("/searchBook", async (req, res) => {
-	const { TTBKey, isbn } = req.query;
-	const aladinApiUrl = `${aladinApiSearchUrl}?ttbkey=${TTBKey}&itemIdType=ISBN&ItemId=${isbn}&output=js&Version=20131101&OptResult=ebookList,usedList,reviewList`;
+app.get("/getBook", async (req, res) => {
+	const { TTBKey, ItemId } = req.query;
+	const aladinApiUrl = `${aladinApiLookUpUrl}?ttbkey=${TTBKey}&itemIdType=ISBN&ItemId=${ItemId}&output=js&Version=20131101&OptResult=ebookList,usedList,reviewList`;
+	
 	try {
 		const data = await fetchData(aladinApiUrl);
 		res.json(data);
