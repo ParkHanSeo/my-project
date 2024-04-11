@@ -1,0 +1,56 @@
+.detail {
+    line-height: 1.6;
+    min-height: calc(100vh - 65px);
+}
+
+.contents {
+    margin: 40px 0 40px 0;
+}
+
+.coverContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 16px;
+    padding-top: 0;
+    position: relative;
+}
+
+.thombnail {
+    width: 220px;
+    background-color: #ececec;
+    height: 100%;
+    position: relative;
+    border-radius: 0 6px 6px 0;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    z-index: 2;
+}
+
+.inner {
+    position: relative;
+    box-shadow: 12px 8px 24px rgba(0,0,0,.2), 4px 8px 8px rgba(0,0,0,.1), 0 0 2px rgba(0,0,0,.24);
+    border-radius: 0 6px 6px 0;
+    overflow: hidden;
+    min-width: 220px;
+    &::before {
+        z-index: 1;
+        width: 20px;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(90deg, rgba(0, 0, 0, .05), rgba(0, 0, 0, .05) .01%, rgba(0, 0, 0, .05) 5.97%, hsla(0, 0%, 100%, .3) 15.89%, hsla(0, 0%, 100%, 0) 28.19%, rgba(0, 0, 0, .05) 0, rgba(0, 0, 0, .0277927) 46.96%, hsla(0, 0%, 100%, 0) 47.51%, hsla(0, 0%, 100%, .1) 54.14%, hsla(0, 0%, 100%, 0));
+    }
+}
+
+.imageWrap {
+    overflow: hidden;
+    position: relative;
+    max-height: unset;
+    padding-top: 0;
+}
