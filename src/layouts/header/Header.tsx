@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Router from 'next/router';
+import { signOut } from "next-auth/react";
 import classNames from "classnames";
 import styles from './Header.module.scss';
 import Link from "next/link";
@@ -7,6 +8,7 @@ import Image from 'next/image';
 import logoImage from '@/assets/common/icon/siar_text_logo.png';
 import { Drawer } from "@/components/modals/Drawer/Drawer";
 import { SideMenu } from "./SideMenu/SideMenu";
+import { useSession } from "next-auth/react";
 
 type Props = {
 	showsServiceMenu: boolean;
@@ -22,7 +24,10 @@ export const Header: React.VFC<Props> = ({
 	onToggleShowServiceMenu,
 }) => {
     const [menuActive, setMenuActive] = useState(false);
-
+    
+    const { data: session, status } = useSession();
+    console.log("세션 데이터");
+    console.log(status);
     const onStartToChangeRoute = useCallback(() => {
 		if (menuActive) {
 			setMenuActive(false);
@@ -42,6 +47,10 @@ export const Header: React.VFC<Props> = ({
         event.preventDefault();
         setMenuActive(false);
 		onToggleShowServiceMenu();
+    }
+
+    const handleClickLogout = (event: React.MouseEvent) => {
+        signOut();
     }
 
     return (
@@ -69,11 +78,18 @@ export const Header: React.VFC<Props> = ({
                 >
                     <SideMenu />
                 </Drawer>
-                <button className={styles.navBoxButton}>
-                    <Link href={"/login"} className={styles.loginLink}>
-                        로그인
-                    </Link>
-                </button>
+                {status === 'unauthenticated' ? (
+                    <button className={styles.navBoxButton}>
+                        <Link href={"/login"} className={styles.loginLink}>
+                            로그인
+                        </Link>
+                    </button>
+                ) : (
+                    <button className={styles.navBoxButton} onClick={handleClickLogout}>
+                        로그아웃
+                    </button>
+                )}
+                
             </div>
         </div>
     )
