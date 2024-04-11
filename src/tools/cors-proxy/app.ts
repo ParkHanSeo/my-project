@@ -35,7 +35,7 @@ app.get("/bestseller", async (req, res) => {
 
 app.get("/getBook", async (req, res) => {
 	const { TTBKey, ItemId } = req.query;
-	const aladinApiUrl = `${aladinApiLookUpUrl}?ttbkey=${TTBKey}&itemIdType=ISBN&ItemId=${ItemId}&output=js&Version=20131101&OptResult=ebookList,usedList,reviewList`;
+	const aladinApiUrl = `${aladinApiLookUpUrl}?ttbkey=${TTBKey}&itemIdType=ISBN&ItemId=${ItemId}&output=js&Version=20131101&Cover=Big&OptResult=ebookList,usedList,reviewList`;
 	
 	try {
 		const data = await fetchData(aladinApiUrl);
