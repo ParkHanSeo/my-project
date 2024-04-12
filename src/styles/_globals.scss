@@ -19,6 +19,11 @@
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
 a {
     text-decoration: none;
 }
@@ -28,8 +33,11 @@ li {
 }
 
 body {
-    height: 100vh;
-    color: #2d2d2d;
+    min-width: 320px;
+    font-size: 14px;
+    color: #242424;
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
 }
 
 img {
@@ -37,10 +45,6 @@ img {
     vertical-align: top;
     border-style: none;
     pointer-events: none;
-}
-
-#__next {
-    height: 100vh;
 }
 
 .main {
