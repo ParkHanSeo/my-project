@@ -1,7 +1,7 @@
 import { Config } from './types';
 
-export const config: Config = 
+export const configs: Config[] = [ 
 	{
 		port: 3001,
 	}
-;
+];

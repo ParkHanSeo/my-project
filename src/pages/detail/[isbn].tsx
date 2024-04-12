@@ -5,7 +5,7 @@ import { getParams } from './[isbn].utils';
 import { useRouter } from "next/router";
 import { getAladinItem } from '@/api/services/book/getAladinItem';
 import { AladinItemReqeust } from '@/models/api/book/AladinItemReqeust';
-import { AladinItemResponse } from '@/models/api/book/AladinItemListResponse';
+import { AladinItemResponse } from '@/models/api/book/AladinItemResponse';
 import { BookDetail } from '@/components/BookDetail';
 
 export type OptionalQuery = SharedOptionalQuery;
@@ -42,7 +42,7 @@ const BookDetailPage: NextPage = () => {
     }, [load, router.isReady])
 
     return (
-        <BookDetail book={props?.book || {}} />
+        <BookDetail book={props?.book.item[0] || {}} />
     )
 }
 

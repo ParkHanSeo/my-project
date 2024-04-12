@@ -1,16 +1,18 @@
 import styles from './BookDetail.module.scss';
-import { AladinItemResponse } from '@/models/api/book/AladinItemListResponse';
+import { useState, useMemo } from 'react';
+import { AladinItem } from '@/models/api/book/AladinItemResponse';
 
 type Props = {
-    book: AladinItemResponse
+    book: AladinItem
 }
 
 export const BookDetail: React.FC<Props> = ({
     book
 }) => {
+
     const author = book.author?.split(',').find(book => book.includes('지은이'))?.replace('(지은이)','').trim();
     const bookCategory = book.categoryName?.split('>')[1];
-    
+
     return (
         <div className={styles.detail}>
             <div className={styles.contents}>

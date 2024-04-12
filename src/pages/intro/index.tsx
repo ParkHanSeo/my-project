@@ -7,10 +7,10 @@ import { SecondSection } from './SecondSection/SecondSection';
 import { StoryBookSection } from './StoryBookSection/StoryBookSection';
 import { BestsellerSection } from './BestsellerSection/BestsellerSection';
 import { getAladinItemList } from '@/api/services/book/getAladinItemList';
-import { AladinItemListResponse } from '@/models/api/book/AladinItemListResponse';
+import { AladinItemResponse } from '@/models/api/book/AladinItemResponse';
 
 type Props = {
-    bannerBookList: AladinItemListResponse;
+    bannerBookList: AladinItemResponse;
 }
 
 const Intro: NextPage = () => {
@@ -41,7 +41,7 @@ const Intro: NextPage = () => {
             <FirstSection />
             <SecondSection />
             <StoryBookSection />
-            <BestsellerSection itemList={props?.bannerBookList.data.item || []}/>
+            <BestsellerSection itemList={props?.bannerBookList.item || []}/>
         </div>
     )
 }

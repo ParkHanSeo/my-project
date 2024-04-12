@@ -1,22 +1,20 @@
 import { ApiResponse } from "@/models/api/ApiResponse";
 
-export interface AladinItemListResponse extends ApiResponse {
-    data: {
-        version: number; // API 버전
-        title: string; // API 결과의 제목
-        link: string; // API 결과와 관련된 알라딘 페이지 URL 주소
-        pubDate: string; // API 출력일 문자형 날짜
-        totalResults: number; // API의 총 결과수
-        startIndex: number; // 페이지수
-        itemsPerPage: number; // 한 페이지에 출력될 상품 수
-        query: string; // API로 조회한 쿼리
-        searchCategoryId?: number; // 분야로 조회한 경우 해당 분야의 ID
-        searchCategoryName?: string; // 분야로 조회한 경우 해당 분야의 분야명
-        item?: AladinItemResponse[]; // 상품정보
-    }
+export interface AladinItemResponse extends ApiResponse {
+    version?: number; // API 버전
+    title?: string; // API 결과의 제목
+    link?: string; // API 결과와 관련된 알라딘 페이지 URL 주소
+    pubDate?: string; // API 출력일 문자형 날짜
+    totalResults?: number; // API의 총 결과수
+    startIndex?: number; // 페이지수
+    itemsPerPage?: number; // 한 페이지에 출력될 상품 수
+    query?: string; // API로 조회한 쿼리
+    searchCategoryId?: number; // 분야로 조회한 경우 해당 분야의 ID
+    searchCategoryName?: string; // 분야로 조회한 경우 해당 분야의 분야명
+    item: AladinItem[]; // 상품정보
 }
 
-export interface AladinItemResponse {
+export interface AladinItem {
     title?: string; // 상품명
     link?: string; // 상품 링크 URL
     categoryName?: string;

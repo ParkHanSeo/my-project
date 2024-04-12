@@ -1,12 +1,9 @@
-import { WriteStream } from 'fs';
 import express from 'express';
 import cors from 'cors';
-import axios, { AxiosResponse } from 'axios';
-import { config } from './config';
+import axios from 'axios';
+import { configs } from './config';
 
-const aladinApiBaseUrl = "https://www.aladin.co.kr/ttb/api/ItemList.aspx";
-const aladinApiSearchUrl = "http://www.aladin.co.kr/ttb/api/ItemSearch.aspx";
-const aladinApiLookUpUrl = "http://www.aladin.co.kr/ttb/api/ItemLookUp.aspx";
+const aladinUrl = "https://www.aladin.co.kr";
 
 const fetchData = async (url: any, headers = {}) => {
 	try {
@@ -17,34 +14,25 @@ const fetchData = async (url: any, headers = {}) => {
 	}
 };
 
-
-const app = express();
-app.use(cors());
-
-app.get("/bestseller", async (req, res) => {
-	const { TTBKey } = req.query;
-	const queryType = "Bestseller";
-	const aladinApiUrl = `${aladinApiBaseUrl}?ttbkey=${TTBKey}&QueryType=${queryType}&MaxResults=10&start=1&SearchTarget=Book&output=js&Cover=Big&CategoryId&Version=20131101`;
-	try {
-		const data = await fetchData(aladinApiUrl);
-		res.json(data);
-	} catch (error) {
-		res.status(500).json({ error: error });
-	}
-})
-
-app.get("/getBook", async (req, res) => {
-	const { TTBKey, ItemId } = req.query;
-	const aladinApiUrl = `${aladinApiLookUpUrl}?ttbkey=${TTBKey}&itemIdType=ISBN&ItemId=${ItemId}&output=js&Version=20131101&Cover=Big&OptResult=ebookList,usedList,reviewList`;
+configs.forEach(config => {
+	const app = express();
+	app.use(cors());
 	
-	try {
-		const data = await fetchData(aladinApiUrl);
-		res.json(data);
-	} catch (error) {
-		res.status(500).json({ error: error });
-	}
-})
+	app.use('/ttb/api', async (request, response, next) => {
+		if (request.method.toLowerCase() !== 'get') {
+			console.error(`Error: unknown method: ${request.method}`);
+		}
+		try {
+			const data = await fetchData(`${aladinUrl}${request.originalUrl}`);
+			response.json(data);
+		} catch (error) {
+			console.error(error);
+			next(error);
+			return;
+		}
+	});
 
-app.listen(config.port);
-console.log(`Listening port: ${config.port}`);
+	app.listen(config.port);
+	console.log(`Listening port: ${config.port}`);
+})
 

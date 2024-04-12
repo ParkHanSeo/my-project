@@ -1,18 +1,23 @@
 import axios from "axios";
 import { AladinItemListRequest } from "@/models/api/book/AladinItemListRequest";
-import { AladinItemListResponse } from "@/models/api/book/AladinItemListResponse";
+import { AladinItemResponse } from "@/models/api/book/AladinItemResponse";
+import { aladinBestsellerApi } from "@/api/aladinApi";
 
 export async function getAladinItemList(
     
-): Promise<AladinItemListResponse> {
-    const data = axios.create({
-        baseURL: 'http://localhost:3001',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-        }, 
-    });
+): Promise<AladinItemResponse> {
     const req = {
-        TTBKey: process.env.NEXT_PUBLIC_ALADIN_TTBKEY
+        TTBKey: process.env.NEXT_PUBLIC_ALADIN_TTBKEY,
+        QueryType: 'Bestseller',
+        MaxResults: 10,
+        start: 1,
+        SearchTarget: 'Book',
+        output: 'js',
+        Cover: 'Big',
+        Version: 20131101,
     }
-    return data.get('/bestseller', { params: req });
+
+    return aladinBestsellerApi.getItemList('/ttb/api/ItemList.aspx', req)
+        .then(response => (response))
+        .catch();
 }
