@@ -12,6 +12,15 @@
     }
 }
 
+@media (max-width: 999px){
+    #__next {
+        padding-bottom: 50px;
+    }
+}
+#__next {
+    height: 100%;
+}
+
 * {
     margin: 0;
     padding: 0;

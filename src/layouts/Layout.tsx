@@ -23,21 +23,19 @@ export const Layout: React.FC<Props> = ({ children }) => {
 	} = useBoolState(false);
 
     return (
-            <>
-                <Header
-                    showsServiceMenu={showsServiceMenu}
-                    hideServiceMenu={hideServiceMenu}
-                    onToggleShowServiceMenu={toggleShowServiceMenu}
-                />
-                <div className={styles.layout}>
-                    <PageRouter>
-                        {children}
-                        {isLoading && (
-                            <Spinner />
-                        )}
-                        <Alert />
-                    </PageRouter>
-                </div>
-            </>
+        <div className={styles.layout}>
+            <Header
+                showsServiceMenu={showsServiceMenu}
+                hideServiceMenu={hideServiceMenu}
+                onToggleShowServiceMenu={toggleShowServiceMenu}
+            />
+            <PageRouter>
+                {children}
+                {isLoading && (
+                    <Spinner />
+                )}
+                <Alert />
+            </PageRouter>
+        </div>
     )
 }

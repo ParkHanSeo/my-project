@@ -56,12 +56,12 @@ export const BookDetail: React.FC<Props> = ({
                                     {book.publisher}
                                 </strong>
                             </li>
-                            <li className={styles.slideItem}>
+                            {/* <li className={styles.slideItem}>
                                 <p>가격</p>
                                 <strong>
                                     {book.priceStandard}
                                 </strong>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
