@@ -1,7 +1,6 @@
 import { NextPage } from 'next';
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
-import styles from './Intro.module.scss';
 import { FirstSection } from './FirstSection/FirstSection';
 import { SecondSection } from './SecondSection/SecondSection';
 import { StoryBookSection } from './StoryBookSection/StoryBookSection';
