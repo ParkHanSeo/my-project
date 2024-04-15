@@ -32,13 +32,6 @@ export const PageRouter: React.FC<Props> = ({
         }
     }
 
-    // 백업
-    // if('authenticated' === status) {
-    //     return router.push('/home');
-    // } else if('unauthenticated' === status) {
-    //     return router.push('/login');
-    // }
-
     useEffect(() => {
         pageRouter();
     }, [session]);
