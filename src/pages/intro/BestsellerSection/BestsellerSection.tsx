@@ -56,7 +56,7 @@ export const BestsellerSection: React.FC<Props> = ({
                         >
                             {itemList.map(item => {
                                 return (
-                                    <BestsellerTile data={item} />
+                                    <BestsellerTile data={item} key={item.isbn}/>
                                 )
                             })}
                         </ul>

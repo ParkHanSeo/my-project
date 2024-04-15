@@ -1,5 +1,8 @@
 import React from "react";
 import { AladinItem } from '@/models/api/book/AladinItemResponse';
+import { useRouter } from "next/router";
+import { ParsedUrlQuery } from "querystring";
+import { pagesPath } from "@/utils/$path";
 import Link from "next/link";
 import styles from './BestsellerTile.module.scss';
 
@@ -10,8 +13,22 @@ type Props = {
 export const BestsellerTile: React.VFC<Props> = ({
     data
 }) => {
+    const router = useRouter();
+
+    const getDetailUrl = (query?: ParsedUrlQuery) => {
+        return pagesPath.detail._isbn(data.isbn).$url({
+            query: {
+                ...query
+            },
+        })
+    }
+
+    const handleMoveDatail = () => {
+        router.push(`/detail/${data.isbn}`)
+    }
+
     return (
-        <Link href={`/detail/${data.isbn}`}>
+        <Link href={getDetailUrl()} onClick={handleMoveDatail}>
             <li className={styles.item}>
                 <div className={styles.books}>
                     <div className={styles.thumbnail}>

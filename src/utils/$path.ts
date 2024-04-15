@@ -2,7 +2,7 @@ import { OptionalQuery as DetailQuery } from '../pages/detail/[isbn]';
 
 export const pagesPath = {
     detail: {
-        _isbn: (isbn: string | number) => ({
+        _isbn: (isbn: string | number | undefined) => ({
             $url: (url?: { query?: DetailQuery, hash?: string }) => ({ pathname: '/detail/[isbn]' as const, query: { isbn, ...url?.query }, hash: url?.hash })
         })
     },

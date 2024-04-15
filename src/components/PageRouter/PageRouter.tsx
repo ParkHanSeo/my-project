@@ -12,23 +12,17 @@ export const PageRouter: React.FC<Props> = ({
 
     const router = useRouter();
     const { pathname } = router;
-
     const { data: session, status } = useSession();
-
-    const authURLs = ["/", "/login"];
-
+    
     const pageRouter = () => {
-        if(authURLs.includes(pathname)){
-            if('authenticated' === status) {
-                if(pathname.includes("detail")) {
-                    return router.push('/detail');
-                }
-                return router.push('/home');
+        if('authenticated' === status) {
+            if(pathname.includes("detail")) {
+                return router.push(router.asPath);
             }
-        } else {
-            if('unauthenticated' === status) {
-                return router.push('/');
-            }
+            return router.push('/home');
+        }
+        if('unauthenticated' === status) {
+            return router.push('/');
         }
     }
 

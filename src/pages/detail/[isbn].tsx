@@ -19,9 +19,8 @@ const BookDetailPage: NextPage = () => {
     const [props, setProps] = useState<Props>();
     
     const load = useCallback(async () => {
-        setProps(undefined);
+        const { isbn } = getParams(router.query);
         try {
-            const { isbn } = getParams(router.query);
             const requestData: AladinItemReqeust = {
                 ItemId: isbn
             }
@@ -30,10 +29,8 @@ const BookDetailPage: NextPage = () => {
                 book: book
             }
             setProps(props);
-        } catch {
-
-        }
-    },[])
+        } catch {}
+    }, [router])
 
     useEffect(() => {
         if(router.isReady) {
