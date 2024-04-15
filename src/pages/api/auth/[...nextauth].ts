@@ -11,11 +11,16 @@ export const authOptions = {
         KakaoProvider({
               clientId: process.env.KAKAO_CLIENT_ID!,
               clientSecret: process.env.KAKAO_CLIENT_SECRET_KEY!,
+              authorization: {
+                  params: {
+                      scope: "account_email",
+                  },
+              },
               async profile(profile) {
                   const res = await kakaoLoginCredential(profile.id);
                   return {
                       id: res.id,
-                      email: res.email,
+                      email: profile.kakao_account?.email,
                       nickname: res.nickname,
                       profileImage: res.profileImage,
                       api_id: res.api_id

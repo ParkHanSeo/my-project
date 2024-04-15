@@ -18,7 +18,7 @@ export const loginCredential = async (email: string, password: string) => {
 export const kakaoLoginCredential = async (id: number) => {
     const findUser = await findUserApiData(id);
     
-    if(!findUser.length) {
+    if(!findUser.id) {
         const idx = await getIndex("user");
         const user: UserProps = {
             id: idx,
