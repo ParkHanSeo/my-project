@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { signIn } from "next-auth/react";
-import { LoginInput } from "@/components/LoginInput";
+import { LoginInput } from "@/components/pages/LoginInput";
 import { UserLoginProps } from '@/models/pages/userProp';
 import { useSetRecoilState } from "recoil";
 import { isLoadingAtom } from '@/hooks/recoil/atoms/loading';

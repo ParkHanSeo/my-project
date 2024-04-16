@@ -6,7 +6,7 @@ import styles from './Header.module.scss';
 import Link from "next/link";
 import Image from 'next/image';
 import logoImage from '@/assets/common/icon/siar_text_logo.png';
-import { Drawer } from "@/components/modals/Drawer/Drawer";
+import { Drawer } from "@/components/modals/drawer/Drawer";
 import { SideMenu } from "./SideMenu/SideMenu";
 import { useSession } from "next-auth/react";
 

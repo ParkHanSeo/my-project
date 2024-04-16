@@ -4,7 +4,7 @@ import { Spinner } from "@/components/shared/Spinner/Spinner";
 import { isLoadingAtom } from "@/hooks/recoil/atoms/loading";
 import { useRecoilValue } from "recoil";
 import { Alert } from "@/components/shared/Allert/Alert";
-import { PageRouter } from "@/components/PageRouter/PageRouter";
+import { PageRouter } from "@/components/pageRouter/PageRouter";
 import { Header } from "./header/Header";
 import { useBoolState } from "@/hooks/state/useBoolState";
 import styles from './Layout.module.scss';
@@ -23,19 +23,19 @@ export const Layout: React.FC<Props> = ({ children }) => {
 	} = useBoolState(false);
 
     return (
-        <div className={styles.layout}>
-            <Header
-                showsServiceMenu={showsServiceMenu}
-                hideServiceMenu={hideServiceMenu}
-                onToggleShowServiceMenu={toggleShowServiceMenu}
-            />
-            <PageRouter>
-                {children}
-                {isLoading && (
-                    <Spinner />
-                )}
-                <Alert />
-            </PageRouter>
-        </div>
+        <PageRouter>
+            <div className={styles.layout}>
+                <Header
+                    showsServiceMenu={showsServiceMenu}
+                    hideServiceMenu={hideServiceMenu}
+                    onToggleShowServiceMenu={toggleShowServiceMenu}
+                />
+                    {children}
+                    {isLoading && (
+                        <Spinner />
+                    )}
+                    <Alert />
+            </div>
+        </PageRouter>
     )
 }

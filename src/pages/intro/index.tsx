@@ -1,12 +1,9 @@
 import { NextPage } from 'next';
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
-import { FirstSection } from './FirstSection/FirstSection';
-import { SecondSection } from './SecondSection/SecondSection';
-import { StoryBookSection } from './StoryBookSection/StoryBookSection';
-import { BestsellerSection } from './BestsellerSection/BestsellerSection';
 import { getAladinItemList } from '@/api/services/book/getAladinItemList';
 import { AladinItemResponse } from '@/models/api/book/AladinItemResponse';
+import { IntroHome } from '@/components/pages/IntroHome/IntroHome';
 
 type Props = {
     bannerBookList: AladinItemResponse;
@@ -36,12 +33,7 @@ const Intro: NextPage = () => {
     }, [load, router.isReady]);
 
     return (
-        <div>
-            <FirstSection />
-            <SecondSection />
-            <StoryBookSection />
-            <BestsellerSection itemList={props?.bannerBookList.item || []}/>
-        </div>
+        <IntroHome bannerBookList={props?.bannerBookList}/>
     )
 }
 

@@ -14,15 +14,24 @@ export const PageRouter: React.FC<Props> = ({
     const { pathname } = router;
     const { data: session, status } = useSession();
     
+    const urls = ["/", "/login", "/signup"];
+    console.log("path 체크");
+    console.log(pathname);
+    console.log(status);
+
     const pageRouter = () => {
-        if('authenticated' === status) {
-            if(pathname.includes("detail")) {
-                return router.push(router.asPath);
+        if (urls.includes(pathname)) {
+            if (status === "authenticated") {
+                router.push("/home");
+                return;
             }
-            return router.push('/home');
-        }
-        if('unauthenticated' === status) {
-            return router.push('/');
+        } else {
+            if (status === "unauthenticated") {
+                router.push("/");
+                return;
+            }
+            router.push("/");
+            return;
         }
     }
 

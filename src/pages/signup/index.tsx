@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { useRouter } from "next/router";
-import { SignupInput } from '@/components/SignupInput';
+import { SignupInput } from '@/components/pages/SignupInput';
 import { UserSingupProps } from '@/models/pages/userProp';
 import { useSetRecoilState } from "recoil";
 import { isLoadingAtom } from '@/hooks/recoil/atoms/loading';
