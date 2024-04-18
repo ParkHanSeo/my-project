@@ -9,6 +9,8 @@ import {
     AladinItemListRequest,
     AladinItemResponse,
     AladinItemListResponse,
+    AladinUsedItemShopRequest,
+    AladinUsedItemShopResponse
 } from '@/models/api/index';
 import { createAxios } from '@/api/utils/createAxios';
 
@@ -19,8 +21,9 @@ const aladinUrl = "https://www.aladin.co.kr";
 const aladinApiBaseUrl = `${aladinUrl}/ttb/api/ItemList.aspx`;
 const aladinApiSearchUrl = `${aladinUrl}/ttb/api/ItemSearch.aspx`;
 const aladinApiLookUpUrl = `${aladinUrl}/ttb/api/ItemLookUp.aspx`;
+const aladinApiOffStoreUrl = `${aladinUrl}/ttb/api/ItemOffStoreList.aspx`;
 
-const generateApi = (type: 'bestseller' | 'detail' | 'search') => {
+const generateApi = (type: 'bestseller' | 'detail' | 'search' | 'shop') => {
     const $axios = createAxios(
 		{
 			timeout
@@ -31,12 +34,12 @@ const generateApi = (type: 'bestseller' | 'detail' | 'search') => {
     async function getItem<
        T extends AladinItemReqeust,
        R extends AladinItemResponse,
-    >(url: string, reqeust?: T): Promise<R> {
+    >(url: string, request?: T): Promise<R> {
         let originUrl = getAladinUrl(type);
         return $axios.get(url, {
             baseURL: 'http://localhost:3001',
             params: {
-                ...reqeust,
+                ...request,
             },
             data: {
                 originUrl: originUrl,
@@ -48,13 +51,13 @@ const generateApi = (type: 'bestseller' | 'detail' | 'search') => {
     async function getItemList<
         T extends AladinItemListRequest,
         R extends AladinItemListResponse,
-    >(url: string, reqeust?: T): Promise<R> {
+    >(url: string, request?: T): Promise<R> {
         let originUrl = getAladinUrl(type);
         
         return $axios.get(url, {
             baseURL: 'http://localhost:3001',
             params: {
-                ...reqeust,
+                ...request,
             },
             data: {
                 originUrl: originUrl,
@@ -63,7 +66,26 @@ const generateApi = (type: 'bestseller' | 'detail' | 'search') => {
         .then(response => response.data);
     }
 
-    return { getItem, getItemList };
+    async function getUsedItemShopList<
+        T extends AladinUsedItemShopRequest,
+        R extends AladinUsedItemShopResponse,
+    >(url: string, request?: T): Promise<R> {
+        let originUrl = getAladinUrl(type);
+
+        return $axios.get(url, {
+            baseURL: 'http://localhost:3001',
+            params: {
+                ...request,
+            },
+            data: {
+                originUrl: originUrl,
+            }
+        })
+        .then(response => response.data);
+    }
+
+
+    return { getItem, getItemList, getUsedItemShopList };
 }
 
 const getAladinUrl = (type: string) => {
@@ -73,6 +95,8 @@ const getAladinUrl = (type: string) => {
         return aladinApiLookUpUrl;
     } else if(type === 'search') {
         return aladinApiSearchUrl;
+    } else if(type === 'shop') {
+        return aladinApiOffStoreUrl;
     }
 }
 
@@ -81,3 +105,5 @@ export const aladinDetailApi = generateApi('detail');
 export const aladinSearchApi = generateApi('search');
 
 export const aladinBestsellerApi = generateApi('bestseller');
+
+export const aladinUsedItemShopApi = generateApi('shop');

@@ -5,12 +5,12 @@ import { aladinDetailApi } from "@/api/aladinApi";
 import { error } from "console";
 
 export async function getAladinItem(
-    reqeust: AladinItemReqeust
+    request: AladinItemReqeust
 ): Promise<AladinItemResponse> {
     const req = {
         TTBKey: process.env.NEXT_PUBLIC_ALADIN_TTBKEY,
         itemIdType: 'ISBN',
-        ItemId: reqeust.ItemId,
+        ItemId: request.ItemId,
         output: 'js',
         Version: 20131101,
         Cover: 'Big',
