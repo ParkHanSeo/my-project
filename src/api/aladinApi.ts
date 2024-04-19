@@ -84,7 +84,6 @@ const generateApi = (type: 'bestseller' | 'detail' | 'search' | 'shop') => {
         .then(response => response.data);
     }
 
-
     return { getItem, getItemList, getUsedItemShopList };
 }
 
