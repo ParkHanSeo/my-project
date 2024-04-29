@@ -8,7 +8,7 @@ export async function getAladinUsedItemShop(
     const req = {
         TTBKey: process.env.NEXT_PUBLIC_ALADIN_TTBKEY,
         itemIdType: 'ISBN',
-        ItemId: request.ItemId,
+        ItemId: request.ItemId, 
     };
     return aladinUsedItemShopApi.getItemList('', req);
 }
