@@ -46,7 +46,7 @@ export const FindUserInput: React.FC<Props> = ({
                 slideFrom="bottom"
                 className={styles.upModal}
             >
-                
+                <SubmitEmail />
             </Dialog>
         </div>
     )
