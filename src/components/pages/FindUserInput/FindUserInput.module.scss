@@ -1,4 +1,4 @@
-.signUp {
+.findUser {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;    
@@ -37,24 +37,4 @@
     color: #6f6f6f;
     font-size: 16px;
     margin-bottom: 24px;
-}
-
-.label {
-    display: block;
-    margin-bottom: 1px;
-    font-size: 10px;
-    color: #8b8b8b;
-}
-
-.subitButton {
-    width: 100%;
-    padding: 10px;
-    background-color: #d28b41;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    &:hover {
-        background-color: #a7651e;
-    }
 }

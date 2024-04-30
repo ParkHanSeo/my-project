@@ -67,7 +67,7 @@ export const LoginInput: React.FC<Props> = ({
                             </Link>
                         </li>
                         <li>
-                            <Link className={styles.link} href="#">
+                            <Link className={styles.link} href="/findUser">
                                 계정 정보 찾기
                             </Link>
                         </li>
