@@ -30,7 +30,7 @@ const Signup: NextPage = () => {
     }
 
     const signupClickHandle = async (userForm: UserSingupProps) => {
-        await singupInputCheck(userForm);
+        await signupInputCheck(userForm);
         setLoading(true);
         const requsetAddData: AddUserRequest = userForm;
         const res: AddUserResponse = await AddUser(requsetAddData);
@@ -39,7 +39,7 @@ const Signup: NextPage = () => {
         router.push("/login");
     }
 
-    const singupInputCheck = async ({email, password, nickname, profileImage}: UserSingupProps) => {
+    const signupInputCheck = async ({email, password, nickname, profileImage}: UserSingupProps) => {
         if(email && !regex.test(email)) {
             displayAlertMessage(ALERT_MESSAGE.INVALID_EMAIL_FORMAT);
             return;
