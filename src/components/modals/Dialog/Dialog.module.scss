@@ -1,0 +1,24 @@
+.dialog {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+}
+
+.slideFromBottom {
+    bottom: 0;
+}
+
+.enterSlideFromBottom {
+	bottom: -100%;
+}
+
+.enterActiveSlideFromBottom {
+	bottom: 0;
+	transition: all 0.3s;
+}
+
+.exit {
+	bottom: -100%;
+	transition: all 0.3s;
+}

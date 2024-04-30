@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent, useCallback } from "react";
 import styles from './FindUserInput.module.scss';
+import { Dialog } from "@/components/modals/Dialog/Dialog";
+import { SubmitEmail } from "./SubmitEmail/SubmitEmail";
 
 type Props = {
     title: string;
@@ -9,7 +11,7 @@ export const FindUserInput: React.FC<Props> = ({
     title
 }) => {
 
-    const [modalFlag, setModalFlag] = useState<Boolean>(false);
+    const [modalFlag, setModalFlag] = useState<boolean>(false);
     const [findUserData, setFindUserData] = useState<string>();
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,9 +20,9 @@ export const FindUserInput: React.FC<Props> = ({
     };
 
     const handleCheckInput = useCallback((data: string) => {
-        const test = data?.split('.')[1];
+        const domain = data?.split('.')[1];
         
-        if(test === 'kr' || test === 'com' || test === 'net') {
+        if(domain === 'kr' || domain === 'com' || domain === 'net') {
             return setModalFlag(true);
         }
         return setModalFlag(false);
@@ -38,6 +40,14 @@ export const FindUserInput: React.FC<Props> = ({
                     </div>
                 </div>
             </div>
+            <Dialog
+                isOpen={modalFlag}
+                top={50}
+                slideFrom="bottom"
+                className={styles.upModal}
+            >
+                
+            </Dialog>
         </div>
     )
 }
